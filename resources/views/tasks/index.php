@@ -6,7 +6,7 @@ ob_start();
 
 <!-- Page Header -->
 <div class="mb-8">
-    <a href="/web_final_project/public/projects/show?id=<?= $project['id'] ?? '' ?>"
+    <a href="/projects/show?id=<?= $project['id'] ?? '' ?>"
         class="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors mb-4">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -22,7 +22,7 @@ ob_start();
             </p>
         </div>
         <div class="mt-4 sm:mt-0">
-            <a href="/web_final_project/public/tasks/create?project_id=<?= $project['id'] ?? '' ?>"
+            <a href="/tasks/create?project_id=<?= $project['id'] ?? '' ?>"
                 class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-all duration-150">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -66,7 +66,7 @@ ob_start();
 
                     <!-- Task Info -->
                     <div class="flex-1 min-w-0">
-                        <a href="/web_final_project/public/tasks/show?id=<?= $task['id'] ?>" class="block">
+                        <a href="/tasks/show?id=<?= $task['id'] ?>" class="block">
                             <h3
                                 class="text-base font-semibold text-slate-900 group-hover:text-primary-600 transition-colors truncate">
                                 <?= htmlspecialchars($task['title']) ?>
@@ -127,7 +127,7 @@ ob_start();
             </p>
 
             <div class="mt-8">
-                <a href="/web_final_project/public/tasks/create?project_id=<?= $project['id'] ?? '' ?>"
+                <a href="/tasks/create?project_id=<?= $project['id'] ?? '' ?>"
                     class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-all duration-150">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

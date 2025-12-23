@@ -19,10 +19,10 @@
             </div>
 
             <div class="space-y-3">
-                <a href="/web_final_project/public/dashboard" class="block w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition">
+                <a href="/dashboard" class="block w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition">
                     الذهاب للوحة التحكم (Dashboard)
                 </a>
-                <a href="/web_final_project/public/logout" class="block w-full bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition">
+                <a href="/logout" class="block w-full bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition">
                     تسجيل خروج
                 </a>
             </div>
@@ -31,10 +31,10 @@
             <p class="text-gray-600 mb-8 text-lg">هذا مشروع تطبيقي لمادة Web Application. يرجى تسجيل الدخول للبدء.</p>
 
             <div class="flex gap-4 justify-center">
-                <a href="/web_final_project/public/login" class="bg-blue-600 text-white font-bold py-2 px-6 rounded hover:bg-blue-700 transition shadow-md">
+                <a href="/login" class="bg-blue-600 text-white font-bold py-2 px-6 rounded hover:bg-blue-700 transition shadow-md">
                     تسجيل دخول
                 </a>
-                <a href="/web_final_project/public/register" class="bg-gray-600 text-white font-bold py-2 px-6 rounded hover:bg-gray-700 transition shadow-md">
+                <a href="/register" class="bg-gray-600 text-white font-bold py-2 px-6 rounded hover:bg-gray-700 transition shadow-md">
                     حساب جديد
                 </a>
             </div>

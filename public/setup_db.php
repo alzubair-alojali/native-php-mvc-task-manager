@@ -4,7 +4,7 @@
  * Initializes the database schema for PostgreSQL or MySQL
  * 
  * Usage: php public/setup_db.php
- * Or visit: /web_final_project/public/setup_db.php
+ * Or visit: /setup_db.php
  */
 
 // Load database connection
@@ -81,7 +81,7 @@ try {
     output("", $isCLI);
     output("Next steps:", $isCLI);
     output("1. Run the seeder: php database/seed_libyan.php", $isCLI);
-    output("2. Access the app at /web_final_project/public/", $isCLI);
+    output("2. Access the app at /", $isCLI);
 
 } catch (PDOException $e) {
     output("❌ Database Error: " . $e->getMessage(), $isCLI);

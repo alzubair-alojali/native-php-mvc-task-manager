@@ -13,7 +13,7 @@ class ProfileController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
         if (!$user) {
             $_SESSION['error'] = 'User not found.';
-            header("Location: /web_final_project/public/");
+            header("Location: /");
             exit;
         }
 
@@ -37,7 +37,7 @@ class ProfileController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -66,7 +66,7 @@ class ProfileController extends Controller
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $_SESSION['old'] = ['name' => $name, 'email' => $email];
-            header("Location: /web_final_project/public/profile");
+            header("Location: /profile");
             exit;
         }
 
@@ -88,7 +88,7 @@ class ProfileController extends Controller
             $_SESSION['error'] = 'Failed to update profile.';
         }
 
-        header("Location: /web_final_project/public/profile");
+        header("Location: /profile");
         exit;
     }
 }

@@ -15,7 +15,7 @@ class SearchController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 

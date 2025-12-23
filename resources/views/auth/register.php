@@ -3,7 +3,7 @@ $title = 'Create Account - Web Final Project';
 
 // Guest guard: If logged in, redirect to dashboard
 if (isset($_SESSION['user_id'])) {
-    header("Location: /web_final_project/public/dashboard");
+    header("Location: /dashboard");
     exit;
 }
 
@@ -86,7 +86,7 @@ ob_start();
         <div class="w-full max-w-md">
             <!-- Mobile Logo -->
             <div class="lg:hidden text-center mb-10">
-                <a href="/web_final_project/public/" class="inline-flex items-center gap-2">
+                <a href="/" class="inline-flex items-center gap-2">
                     <div class="h-10 w-10 rounded-lg bg-emerald-600 flex items-center justify-center">
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor">
@@ -103,12 +103,12 @@ ob_start();
                 <h2 class="text-3xl font-bold text-slate-900">Create your account</h2>
                 <p class="mt-2 text-slate-600">
                     Already have an account?
-                    <a href="/web_final_project/public/login"
+                    <a href="/login"
                         class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
                 </p>
             </div>
 
-            <form action="/web_final_project/public/register" method="POST" class="space-y-5">
+            <form action="/register" method="POST" class="space-y-5">
                 <!-- Name -->
                 <div>
                     <label for="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">
@@ -167,7 +167,7 @@ ob_start();
 
             <!-- Back to Home -->
             <p class="mt-8 text-center">
-                <a href="/web_final_project/public/"
+                <a href="/"
                     class="text-sm font-medium text-slate-500 hover:text-indigo-600 inline-flex items-center gap-1 transition-colors">
                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />

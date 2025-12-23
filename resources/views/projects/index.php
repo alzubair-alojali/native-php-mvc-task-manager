@@ -14,7 +14,7 @@ ob_start();
             </p>
         </div>
         <div class="mt-4 sm:mt-0">
-            <a href="/web_final_project/public/projects/create"
+            <a href="/projects/create"
                 class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-150">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -35,7 +35,7 @@ ob_start();
                 <div class="p-6 pb-4">
                     <div class="flex items-start justify-between gap-4">
                         <h3 class="text-lg font-semibold text-slate-900 group-hover:text-primary-600 transition-colors">
-                            <a href="/web_final_project/public/projects/show?id=<?= $project['id'] ?>"
+                            <a href="/projects/show?id=<?= $project['id'] ?>"
                                 class="after:absolute after:inset-0">
                                 <?= htmlspecialchars($project['title']) ?>
                             </a>
@@ -72,7 +72,7 @@ ob_start();
                                 <?= $project['deadline'] ? date('M d, Y', strtotime($project['deadline'])) : 'No deadline' ?>
                             </span>
                         </div>
-                        <a href="/web_final_project/public/projects/show?id=<?= $project['id'] ?>"
+                        <a href="/projects/show?id=<?= $project['id'] ?>"
                             class="relative z-10 inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-500 transition-colors">
                             Manage
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -101,7 +101,7 @@ ob_start();
             </p>
 
             <div class="mt-8">
-                <a href="/web_final_project/public/projects/create"
+                <a href="/projects/create"
                     class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-150">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

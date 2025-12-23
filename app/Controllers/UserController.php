@@ -16,7 +16,7 @@ class UserController extends Controller
 
         if (($_SESSION['user_role'] ?? '') !== 'manager') {
             $_SESSION['error'] = 'Access denied. Only managers can manage users.';
-            header("Location: /web_final_project/public/dashboard");
+            header("Location: /dashboard");
             exit;
         }
     }
@@ -53,11 +53,11 @@ class UserController extends Controller
         $userModel = new User();
         if ($userModel->create($data)) {
             $_SESSION['success'] = 'User created successfully.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to create user. Please try again.';
-            header("Location: /web_final_project/public/users/create");
+            header("Location: /users/create");
             exit;
         }
     }
@@ -72,7 +72,7 @@ class UserController extends Controller
 
         if (!$user) {
             $_SESSION['error'] = 'User not found.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         }
 
@@ -103,11 +103,11 @@ class UserController extends Controller
         $userModel = new User();
         if ($userModel->update($id, $data)) {
             $_SESSION['success'] = 'User updated successfully.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to update user. Please try again.';
-            header("Location: /web_final_project/public/users/edit?id=" . $id);
+            header("Location: /users/edit?id=" . $id);
             exit;
         }
     }
@@ -121,18 +121,18 @@ class UserController extends Controller
         // Prevent self-deletion
         if ($id == $_SESSION['user_id']) {
             $_SESSION['error'] = 'You cannot delete your own account.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         }
 
         $userModel = new User();
         if ($userModel->delete($id)) {
             $_SESSION['success'] = 'User deleted successfully.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to delete user. Please try again.';
-            header("Location: /web_final_project/public/users");
+            header("Location: /users");
             exit;
         }
     }

@@ -20,7 +20,7 @@ $searchQuery = $_GET['q'] ?? '';
 
         <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
             <!-- Search Bar -->
-            <form class="relative flex flex-1 items-center" action="/web_final_project/public/search" method="GET">
+            <form class="relative flex flex-1 items-center" action="/search" method="GET">
                 <div class="relative flex-1 max-w-lg">
                     <!-- Search Icon -->
                     <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400"
@@ -37,7 +37,7 @@ $searchQuery = $_GET['q'] ?? '';
 
                     <!-- Clear Button (X) - Only shows if query exists -->
                     <?php if (!empty($searchQuery)): ?>
-                        <a href="/web_final_project/public/search"
+                        <a href="/search"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                             title="Clear search">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -91,7 +91,7 @@ $searchQuery = $_GET['q'] ?? '';
                         x-transition:leave-start="transform opacity-100 scale-100"
                         x-transition:leave-end="transform opacity-0 scale-95"
                         class="absolute right-0 z-10 mt-2.5 w-48 origin-top-right rounded-xl bg-white py-2 shadow-lg ring-1 ring-slate-900/5 focus:outline-none">
-                        <a href="/web_final_project/public/profile"
+                        <a href="/profile"
                             class="flex items-center gap-3 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
                             <svg class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor">
@@ -101,7 +101,7 @@ $searchQuery = $_GET['q'] ?? '';
                             Your Profile
                         </a>
                         <div class="border-t border-slate-100 my-1"></div>
-                        <a href="/web_final_project/public/logout"
+                        <a href="/logout"
                             class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
                             <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor">

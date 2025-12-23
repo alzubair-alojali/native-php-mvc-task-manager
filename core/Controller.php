@@ -10,7 +10,7 @@ class Controller
     protected function requireAuth()
     {
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
     }
@@ -22,7 +22,7 @@ class Controller
     protected function requireGuest()
     {
         if (isset($_SESSION['user_id'])) {
-            header("Location: /web_final_project/public/dashboard");
+            header("Location: /dashboard");
             exit;
         }
     }

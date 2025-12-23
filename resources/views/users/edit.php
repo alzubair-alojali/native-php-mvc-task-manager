@@ -9,7 +9,7 @@ ob_start();
 
 <!-- Page Header -->
 <div class="mb-8">
-    <a href="/web_final_project/public/users"
+    <a href="/users"
         class="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors mb-4">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -36,7 +36,7 @@ ob_start();
             </div>
         </div>
 
-        <form action="/web_final_project/public/users/edit" method="POST" class="space-y-6">
+        <form action="/users/edit" method="POST" class="space-y-6">
             <input type="hidden" name="id" value="<?= $user['id'] ?>">
 
             <!-- Name -->
@@ -101,7 +101,7 @@ ob_start();
 
             <!-- Submit Buttons -->
             <div class="flex items-center justify-end gap-4 pt-6 border-t border-slate-100">
-                <a href="/web_final_project/public/users"
+                <a href="/users"
                     class="px-4 py-2.5 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
                     Cancel
                 </a>

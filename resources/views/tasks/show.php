@@ -36,7 +36,7 @@ ob_start();
 
 <!-- Back Link -->
 <div class="mb-6">
-    <a href="/web_final_project/public/tasks?project_id=<?= $project['id'] ?? '' ?>"
+    <a href="/tasks?project_id=<?= $project['id'] ?? '' ?>"
         class="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -57,7 +57,7 @@ ob_start();
 
         <!-- Action Buttons -->
         <div class="flex flex-wrap items-center gap-2">
-            <a href="/web_final_project/public/tasks/edit?id=<?= $task['id'] ?>"
+            <a href="/tasks/edit?id=<?= $task['id'] ?>"
                 class="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 transition-all">
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -65,7 +65,7 @@ ob_start();
                 </svg>
                 Edit
             </a>
-            <form action="/web_final_project/public/tasks/delete" method="POST" class="inline"
+            <form action="/tasks/delete" method="POST" class="inline"
                 onsubmit="return confirm('Delete this task?');">
                 <input type="hidden" name="id" value="<?= $task['id'] ?>">
                 <button type="submit"
@@ -97,7 +97,7 @@ ob_start();
                 x-transition:enter-start="transform opacity-0 scale-95"
                 x-transition:enter-end="transform opacity-100 scale-100"
                 class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-xl bg-white py-2 shadow-lg ring-1 ring-slate-900/5">
-                <form action="/web_final_project/public/tasks/update-status" method="POST">
+                <form action="/tasks/update-status" method="POST">
                     <input type="hidden" name="id" value="<?= $task['id'] ?>">
                     <button type="submit" name="status" value="pending"
                         class="flex w-full items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 <?= $status === 'pending' ? 'bg-slate-50' : '' ?>">
@@ -228,7 +228,7 @@ ob_start();
 
     <!-- Comment Form -->
     <div class="border-t border-slate-100 p-4 bg-slate-50">
-        <form action="/web_final_project/public/comments/store" method="POST" class="flex gap-3">
+        <form action="/comments/store" method="POST" class="flex gap-3">
             <input type="hidden" name="task_id" value="<?= $task['id'] ?>">
             <div class="flex-shrink-0">
                 <div

@@ -44,7 +44,7 @@ ob_start();
             <h2 class="text-lg font-semibold text-slate-900 mb-4">Projects (<?= count($projects) ?>)</h2>
             <div class="space-y-3">
                 <?php foreach ($projects as $project): ?>
-                    <a href="/web_final_project/public/projects/show?id=<?= $project['id'] ?>"
+                    <a href="/projects/show?id=<?= $project['id'] ?>"
                         class="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-900/5 hover:shadow-md transition-all">
                         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -71,7 +71,7 @@ ob_start();
             <h2 class="text-lg font-semibold text-slate-900 mb-4">Tasks (<?= count($tasks) ?>)</h2>
             <div class="space-y-3">
                 <?php foreach ($tasks as $task): ?>
-                    <a href="/web_final_project/public/tasks/show?id=<?= $task['id'] ?>"
+                    <a href="/tasks/show?id=<?= $task['id'] ?>"
                         class="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-900/5 hover:shadow-md transition-all">
                         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

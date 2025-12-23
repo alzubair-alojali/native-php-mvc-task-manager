@@ -3,7 +3,7 @@ $title = 'Web Final Project - University Project Management';
 
 // Guest guard: If logged in, redirect to dashboard
 if (isset($_SESSION['user_id'])) {
-    header("Location: /web_final_project/public/dashboard");
+    header("Location: /dashboard");
     exit;
 }
 
@@ -28,11 +28,11 @@ ob_start();
 
             <!-- Nav Links -->
             <div class="flex items-center gap-3">
-                <a href="/web_final_project/public/login"
+                <a href="/login"
                     class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-4 py-2">
                     Sign In
                 </a>
-                <a href="/web_final_project/public/register"
+                <a href="/register"
                     class="inline-flex items-center rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition-all">
                     Get Started
                 </a>
@@ -78,14 +78,14 @@ ob_start();
 
             <!-- CTA Buttons -->
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/web_final_project/public/register"
+                <a href="/register"
                     class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-500 hover:shadow-xl transition-all duration-300">
                     Get Started Free
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                 </a>
-                <a href="/web_final_project/public/login"
+                <a href="/login"
                     class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 ring-1 ring-indigo-200 hover:ring-indigo-300 hover:bg-indigo-50 transition-all duration-300">
                     Sign In
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -185,7 +185,7 @@ ob_start();
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-white mb-6">Ready to ace your projects?</h2>
         <p class="text-lg text-indigo-100 mb-10">Join students already using Web Final Project.</p>
-        <a href="/web_final_project/public/register"
+        <a href="/register"
             class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 shadow-lg hover:bg-indigo-50 transition-all">
             Start Free Today
         </a>

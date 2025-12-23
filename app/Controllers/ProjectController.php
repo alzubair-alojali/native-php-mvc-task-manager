@@ -15,7 +15,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -32,7 +32,7 @@ class ProjectController extends Controller
     {
         // Ensure user is logged in
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -70,11 +70,11 @@ class ProjectController extends Controller
 
         if ($projectId) {
             $_SESSION['success'] = 'Project created successfully.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to create project. Please try again.';
-            header("Location: /web_final_project/public/projects/create");
+            header("Location: /projects/create");
             exit;
         }
     }
@@ -88,7 +88,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -98,7 +98,7 @@ class ProjectController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Project not found or access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -114,7 +114,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -123,7 +123,7 @@ class ProjectController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Project not found or access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -139,7 +139,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -158,11 +158,11 @@ class ProjectController extends Controller
         // Security: Pass manager ID for ownership verification
         if ($projectModel->update($id, $data, $managerId)) {
             $_SESSION['success'] = 'Project updated successfully.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to update project. Please try again.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
     }
@@ -176,7 +176,7 @@ class ProjectController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -184,11 +184,11 @@ class ProjectController extends Controller
         // Security: Pass manager ID for ownership verification
         if ($projectModel->delete($id, $managerId)) {
             $_SESSION['success'] = 'Project deleted successfully.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         } else {
             $_SESSION['error'] = 'Failed to delete project. Please try again.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
     }

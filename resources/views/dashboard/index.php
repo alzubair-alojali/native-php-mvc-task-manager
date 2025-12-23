@@ -16,7 +16,7 @@ ob_start();
             </p>
         </div>
         <div class="mt-4 sm:mt-0">
-            <a href="/web_final_project/public/projects/create"
+            <a href="/projects/create"
                 class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-all duration-150">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -102,7 +102,7 @@ ob_start();
         <div class="border-b border-slate-100 px-6 py-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-slate-900">Recent Projects</h2>
-                <a href="/web_final_project/public/projects"
+                <a href="/projects"
                     class="text-sm font-medium text-primary-600 hover:text-primary-500 transition-colors">
                     View all →
                 </a>
@@ -112,7 +112,7 @@ ob_start();
         <?php if (!empty($recent_projects)): ?>
             <div class="divide-y divide-slate-100">
                 <?php foreach ($recent_projects as $project): ?>
-                    <a href="/web_final_project/public/projects/show?id=<?= $project['id'] ?>"
+                    <a href="/projects/show?id=<?= $project['id'] ?>"
                         class="flex items-center gap-4 px-6 py-4 hover:bg-slate-50 transition-colors">
                         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -149,7 +149,7 @@ ob_start();
                         d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                 </svg>
                 <p class="mt-4 text-sm text-slate-500">No projects yet</p>
-                <a href="/web_final_project/public/projects/create"
+                <a href="/projects/create"
                     class="mt-2 inline-block text-sm font-medium text-primary-600 hover:text-primary-500">
                     Create your first project →
                 </a>
@@ -189,7 +189,7 @@ ob_start();
 
                         <!-- Task Info -->
                         <div class="flex-1 min-w-0">
-                            <a href="/web_final_project/public/tasks/show?id=<?= $task['id'] ?>" class="block">
+                            <a href="/tasks/show?id=<?= $task['id'] ?>" class="block">
                                 <p
                                     class="text-sm font-medium <?= $isCompleted ? 'text-slate-400 line-through' : 'text-slate-900' ?> truncate">
                                     <?= htmlspecialchars($task['title']) ?>
@@ -241,7 +241,7 @@ ob_start();
         <h2 class="text-lg font-semibold text-slate-900 mb-4">Projects I'm a Member Of</h2>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <?php foreach ($member_projects as $mProject): ?>
-                <a href="/web_final_project/public/projects/show?id=<?= $mProject['id'] ?>"
+                <a href="/projects/show?id=<?= $mProject['id'] ?>"
                     class="group rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-900/5 hover:shadow-md transition-all">
                     <p class="text-sm font-medium text-slate-900 group-hover:text-primary-600 transition-colors">
                         <?= htmlspecialchars($mProject['title']) ?>

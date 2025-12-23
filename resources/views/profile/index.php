@@ -35,7 +35,7 @@ ob_start();
             </div>
         </div>
 
-        <form action="/web_final_project/public/profile/update" method="POST" class="space-y-6">
+        <form action="/profile/update" method="POST" class="space-y-6">
             <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-medium text-slate-700 mb-2">

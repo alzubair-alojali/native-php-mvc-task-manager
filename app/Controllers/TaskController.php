@@ -16,13 +16,13 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
         if (!$projectId) {
             $_SESSION['error'] = 'Project ID is required.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -32,7 +32,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Project not found or access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -54,7 +54,7 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -64,7 +64,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Project not found or access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -80,7 +80,7 @@ class TaskController extends Controller
         $projectId = $_POST['project_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -91,7 +91,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'You do not have permission to add tasks to this project.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -116,11 +116,11 @@ class TaskController extends Controller
 
         if ($taskId) {
             $_SESSION['success'] = 'Task created successfully.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $projectId);
+            header("Location: /tasks?project_id=" . $projectId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to create task. Please try again.';
-            header("Location: /web_final_project/public/tasks/create?project_id=" . $projectId);
+            header("Location: /tasks/create?project_id=" . $projectId);
             exit;
         }
     }
@@ -134,7 +134,7 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -143,7 +143,7 @@ class TaskController extends Controller
 
         if (!$task) {
             $_SESSION['error'] = 'Task not found.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -153,7 +153,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -191,7 +191,7 @@ class TaskController extends Controller
 
         if (!$task) {
             $_SESSION['error'] = 'Task not found.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -201,17 +201,17 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
         if ($taskModel->updateStatus($id, $status)) {
             $_SESSION['success'] = 'Task status updated.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $task['project_id']);
+            header("Location: /tasks?project_id=" . $task['project_id']);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to update task status.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $task['project_id']);
+            header("Location: /tasks?project_id=" . $task['project_id']);
             exit;
         }
     }
@@ -225,7 +225,7 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -234,7 +234,7 @@ class TaskController extends Controller
 
         if (!$task) {
             $_SESSION['error'] = 'Task not found.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -244,7 +244,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -263,7 +263,7 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -272,7 +272,7 @@ class TaskController extends Controller
 
         if (!$task) {
             $_SESSION['error'] = 'Task not found.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -282,7 +282,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -301,11 +301,11 @@ class TaskController extends Controller
 
         if ($taskModel->update($id, $data)) {
             $_SESSION['success'] = 'Task updated successfully.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $task['project_id']);
+            header("Location: /tasks?project_id=" . $task['project_id']);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to update task. Please try again.';
-            header("Location: /web_final_project/public/tasks/edit?id=" . $id);
+            header("Location: /tasks/edit?id=" . $id);
             exit;
         }
     }
@@ -319,7 +319,7 @@ class TaskController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -328,7 +328,7 @@ class TaskController extends Controller
 
         if (!$task) {
             $_SESSION['error'] = 'Task not found.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -338,7 +338,7 @@ class TaskController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -346,11 +346,11 @@ class TaskController extends Controller
 
         if ($taskModel->delete($id)) {
             $_SESSION['success'] = 'Task deleted successfully.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $projectId);
+            header("Location: /tasks?project_id=" . $projectId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to delete task. Please try again.';
-            header("Location: /web_final_project/public/tasks?project_id=" . $projectId);
+            header("Location: /tasks?project_id=" . $projectId);
             exit;
         }
     }
@@ -363,7 +363,7 @@ class TaskController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 

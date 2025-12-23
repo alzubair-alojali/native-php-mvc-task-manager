@@ -30,7 +30,7 @@ unset($_SESSION['errors']);
     <!-- Add Member Form (Only for Manager) -->
     <?php if ($isManager): ?>
         <div class="border-b border-slate-100 px-6 py-4 bg-slate-50">
-            <form action="/web_final_project/public/projects/members/add" method="POST" class="flex gap-2">
+            <form action="/projects/members/add" method="POST" class="flex gap-2">
                 <input type="hidden" name="project_id" value="<?= $projectId ?>">
                 <div class="flex-1">
                     <input type="email" name="email" placeholder="Enter email to invite..."
@@ -85,7 +85,7 @@ unset($_SESSION['errors']);
 
                     <?php if ($isManager): ?>
                         <!-- Remove Button (Manager Only) -->
-                        <form action="/web_final_project/public/projects/members/remove" method="POST"
+                        <form action="/projects/members/remove" method="POST"
                             class="opacity-0 group-hover:opacity-100 transition-opacity"
                             onsubmit="return confirm('Remove this member?');">
                             <input type="hidden" name="project_id" value="<?= $projectId ?>">

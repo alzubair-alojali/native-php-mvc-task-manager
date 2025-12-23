@@ -2,10 +2,10 @@
 // Helper function for active link styling
 $currentPath = $_SERVER['REQUEST_URI'] ?? '';
 $navItems = [
-    ['name' => 'Dashboard', 'href' => '/web_final_project/public/', 'icon' => 'home', 'match' => ['public\/$', 'dashboard']],
-    ['name' => 'Projects', 'href' => '/web_final_project/public/projects', 'icon' => 'folder', 'match' => ['projects']],
-    ['name' => 'Tasks', 'href' => '/web_final_project/public/tasks/my-tasks', 'icon' => 'clipboard', 'match' => ['tasks']],
-    ['name' => 'Team', 'href' => '/web_final_project/public/users', 'icon' => 'users', 'match' => ['users']],
+    ['name' => 'Dashboard', 'href' => '/', 'icon' => 'home', 'match' => ['public\/$', 'dashboard']],
+    ['name' => 'Projects', 'href' => '/projects', 'icon' => 'folder', 'match' => ['projects']],
+    ['name' => 'Tasks', 'href' => '/tasks/my-tasks', 'icon' => 'clipboard', 'match' => ['tasks']],
+    ['name' => 'Team', 'href' => '/users', 'icon' => 'users', 'match' => ['users']],
 ];
 
 if (!function_exists('isActiveLink')) {
@@ -36,7 +36,7 @@ if (!function_exists('getIcon')) {
 
 <!-- Logo -->
 <div class="flex h-16 shrink-0 items-center">
-    <a href="/web_final_project/public/" class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
             <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round"

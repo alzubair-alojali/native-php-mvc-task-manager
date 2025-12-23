@@ -62,7 +62,7 @@ class CommentController extends Controller
         $body = $_POST['body'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -86,7 +86,7 @@ class CommentController extends Controller
         if (!$access) {
             http_response_code(403);
             $_SESSION['error'] = 'Access denied. You must be the project manager or a team member to comment on this task.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -100,11 +100,11 @@ class CommentController extends Controller
 
         if ($commentId) {
             $_SESSION['success'] = 'Comment added successfully.';
-            header("Location: /web_final_project/public/tasks/show?id=" . $taskId);
+            header("Location: /tasks/show?id=" . $taskId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to add comment. Please try again.';
-            header("Location: /web_final_project/public/tasks/show?id=" . $taskId);
+            header("Location: /tasks/show?id=" . $taskId);
             exit;
         }
     }
@@ -118,13 +118,13 @@ class CommentController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
         if (!$taskId) {
             $_SESSION['error'] = 'Task ID is required.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -134,7 +134,7 @@ class CommentController extends Controller
         if (!$access) {
             http_response_code(403);
             $_SESSION['error'] = 'Access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -168,7 +168,7 @@ class CommentController extends Controller
         $userId = $_SESSION['user_id'] ?? null;
 
         if (!$userId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -192,11 +192,11 @@ class CommentController extends Controller
 
         if ($commentModel->delete($commentId, $userId)) {
             $_SESSION['success'] = 'Comment deleted.';
-            header("Location: /web_final_project/public/tasks/show?id=" . $taskId);
+            header("Location: /tasks/show?id=" . $taskId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to delete comment. Please try again.';
-            header("Location: " . ($_SERVER['HTTP_REFERER'] ?? '/web_final_project/public/projects'));
+            header("Location: " . ($_SERVER['HTTP_REFERER'] ?? '/projects'));
             exit;
         }
     }

@@ -79,3 +79,40 @@ class Env
         return $default;
     }
 }
+
+/**
+ * Get the application base URL
+ * Returns empty string for production (root deployment)
+ * Returns '/web_final_project/public' for local development
+ * 
+ * @return string
+ */
+function base_url()
+{
+    // Load env if not already loaded
+    static $loaded = false;
+    if (!$loaded) {
+        Env::load(__DIR__ . '/../.env');
+        $loaded = true;
+    }
+
+    return Env::get('APP_URL', '');
+}
+
+/**
+ * Generate a full URL path
+ * 
+ * @param string $path The path (e.g., '/login', '/dashboard')
+ * @return string Full URL with base
+ */
+function url($path = '')
+{
+    $base = base_url();
+
+    // Ensure path starts with /
+    if ($path && $path[0] !== '/') {
+        $path = '/' . $path;
+    }
+
+    return $base . $path;
+}

@@ -17,13 +17,13 @@ class ProjectMemberController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
         if (!$projectId) {
             $_SESSION['error'] = 'Project ID is required.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -33,7 +33,7 @@ class ProjectMemberController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'Project not found or access denied.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -56,7 +56,7 @@ class ProjectMemberController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -80,7 +80,7 @@ class ProjectMemberController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'You do not have permission to manage this project.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -116,11 +116,11 @@ class ProjectMemberController extends Controller
 
         if ($memberModel->addMember($projectId, $user['id'])) {
             $_SESSION['success'] = 'Member added successfully.';
-            header("Location: /web_final_project/public/projects/members?project_id=" . $projectId);
+            header("Location: /projects/members?project_id=" . $projectId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to add member. Please try again.';
-            header("Location: /web_final_project/public/projects/members?project_id=" . $projectId);
+            header("Location: /projects/members?project_id=" . $projectId);
             exit;
         }
     }
@@ -135,7 +135,7 @@ class ProjectMemberController extends Controller
         $managerId = $_SESSION['user_id'] ?? null;
 
         if (!$managerId) {
-            header("Location: /web_final_project/public/login");
+            header("Location: /login");
             exit;
         }
 
@@ -145,7 +145,7 @@ class ProjectMemberController extends Controller
 
         if (!$project) {
             $_SESSION['error'] = 'You do not have permission to manage this project.';
-            header("Location: /web_final_project/public/projects");
+            header("Location: /projects");
             exit;
         }
 
@@ -153,11 +153,11 @@ class ProjectMemberController extends Controller
 
         if ($memberModel->removeMember($projectId, $userId)) {
             $_SESSION['success'] = 'Member removed successfully.';
-            header("Location: /web_final_project/public/projects/members?project_id=" . $projectId);
+            header("Location: /projects/members?project_id=" . $projectId);
             exit;
         } else {
             $_SESSION['error'] = 'Failed to remove member. Please try again.';
-            header("Location: /web_final_project/public/projects/members?project_id=" . $projectId);
+            header("Location: /projects/members?project_id=" . $projectId);
             exit;
         }
     }
