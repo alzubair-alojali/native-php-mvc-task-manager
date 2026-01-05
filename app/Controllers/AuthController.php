@@ -31,11 +31,11 @@ class AuthController extends Controller
             $newUser = $userModel->findByEmail($data['email']);
             $_SESSION['user_id'] = $newUser['id'];
             $_SESSION['user_name'] = $newUser['name'];
-            header("Location: /dashboard");
+            header("Location: " . base_url('/dashboard'));
             exit;
         } else {
             $_SESSION['error'] = 'Registration failed. Please try again.';
-            header("Location: /register");
+            header("Location: " . base_url('/register'));
             exit;
         }
 
@@ -69,12 +69,12 @@ class AuthController extends Controller
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_role'] = $user['role'] ?? 'employee';
 
-            header("Location: /dashboard");
+            header("Location: " . base_url('/dashboard'));
             exit;
         } else {
             $_SESSION['errors'] = ['login' => 'Invalid email or password.'];
             $_SESSION['old'] = ['email' => $email];
-            header("Location: /login");
+            header("Location: " . base_url('/login'));
             exit;
         }
     }
@@ -83,7 +83,7 @@ class AuthController extends Controller
     {
         session_unset();
         session_destroy();
-        header("Location: /");
+        header("Location: " . base_url('/'));
         exit;
     }
 }

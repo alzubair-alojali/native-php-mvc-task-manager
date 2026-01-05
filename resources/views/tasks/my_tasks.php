@@ -46,7 +46,7 @@ ob_start();
 
                     <!-- Task Info -->
                     <div class="flex-1 min-w-0">
-                        <a href="/tasks/show?id=<?= $task['id'] ?>" class="block">
+                        <a href="<?= base_url('/tasks/show?id=' . $task['id']) ?>" class="block">
                             <h3
                                 class="text-base font-semibold <?= $isCompleted ? 'text-slate-400 line-through' : 'text-slate-900 group-hover:text-primary-600' ?> transition-colors truncate">
                                 <?= htmlspecialchars($task['title']) ?>

@@ -14,7 +14,7 @@ ob_start();
             </p>
         </div>
         <div class="mt-4 sm:mt-0">
-            <a href="/users/create"
+            <a href="<?= base_url('/users/create') ?>"
                 class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-all duration-150">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -104,7 +104,7 @@ ob_start();
                             <td class="whitespace-nowrap py-4 pl-3 pr-6 text-right">
                                 <div class="flex items-center justify-end gap-2">
                                     <!-- Edit Button -->
-                                    <a href="/users/edit?id=<?= $user['id'] ?>"
+                                    <a href="<?= base_url('/users/edit?id=' . $user['id']) ?>"
                                         class="inline-flex items-center justify-center h-8 w-8 rounded-lg text-primary-600 hover:bg-primary-50 transition-colors"
                                         title="Edit">
                                         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -115,7 +115,7 @@ ob_start();
                                     </a>
 
                                     <!-- Delete Button -->
-                                    <form action="/users/delete" method="POST" class="inline"
+                                    <form action="<?= base_url('/users/delete') ?>" method="POST" class="inline"
                                         onsubmit="return confirm('Are you sure you want to delete this user?');">
                                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                         <button type="submit"
@@ -152,7 +152,7 @@ ob_start();
             </p>
 
             <div class="mt-8">
-                <a href="/users/create"
+                <a href="<?= base_url('/users/create') ?>"
                     class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-all duration-150">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

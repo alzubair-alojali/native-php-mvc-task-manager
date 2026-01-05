@@ -2,10 +2,10 @@
 // Helper function for active link styling
 $currentPath = $_SERVER['REQUEST_URI'] ?? '';
 $navItems = [
-    ['name' => 'Dashboard', 'href' => '/', 'icon' => 'home', 'match' => ['public\/$', 'dashboard']],
-    ['name' => 'Projects', 'href' => '/projects', 'icon' => 'folder', 'match' => ['projects']],
-    ['name' => 'Tasks', 'href' => '/tasks/my-tasks', 'icon' => 'clipboard', 'match' => ['tasks']],
-    ['name' => 'Team', 'href' => '/users', 'icon' => 'users', 'match' => ['users']],
+    ['name' => 'Dashboard', 'href' => base_url('/'), 'icon' => 'home', 'match' => ['public\/$', 'dashboard']],
+    ['name' => 'Projects', 'href' => base_url('/projects'), 'icon' => 'folder', 'match' => ['projects']],
+    ['name' => 'Tasks', 'href' => base_url('/tasks/my-tasks'), 'icon' => 'clipboard', 'match' => ['tasks']],
+    ['name' => 'Team', 'href' => base_url('/users'), 'icon' => 'users', 'match' => ['users']],
 ];
 
 if (!function_exists('isActiveLink')) {
@@ -36,7 +36,7 @@ if (!function_exists('getIcon')) {
 
 <!-- Logo -->
 <div class="flex h-16 shrink-0 items-center">
-    <a href="/" class="flex items-center gap-3">
+    <a href="<?= base_url('/') ?>" class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
             <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -79,7 +79,43 @@ if (!function_exists('getIcon')) {
             </ul>
         </li>
 
-        <!-- Bottom section -->
+        <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'manager'): ?>
+            <!-- Admin Panel Section (Manager Only) -->
+            <li>
+                <div class="text-xs font-semibold leading-6 text-slate-400 uppercase tracking-wider mt-4 mb-2">Admin Panel
+                </div>
+                <ul role="list" class="-mx-2 space-y-1">
+                    <li>
+                        <a href="<?= base_url('/admin/content') ?>" class="group flex gap-x-3 rounded-lg p-3 text-sm font-semibold leading-6 transition-all duration-150
+                        <?= preg_match('/admin\/content/', $currentPath)
+                            ? 'bg-primary-600 text-white'
+                            : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                            ?>">
+                            <svg class="h-6 w-6 shrink-0 <?= preg_match('/admin\/content/', $currentPath) ? 'text-white' : 'text-slate-400 group-hover:text-white' ?>"
+                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                            </svg>
+                            Content
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('/admin/messages') ?>" class="group flex gap-x-3 rounded-lg p-3 text-sm font-semibold leading-6 transition-all duration-150
+                        <?= preg_match('/admin\/messages/', $currentPath)
+                            ? 'bg-primary-600 text-white'
+                            : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                            ?>">
+                            <svg class="h-6 w-6 shrink-0 <?= preg_match('/admin\/messages/', $currentPath) ? 'text-white' : 'text-slate-400 group-hover:text-white' ?>"
+                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                            Messages
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        <?php endif; ?>
         <li class="mt-auto">
             <div class="rounded-lg bg-slate-800 p-4">
                 <div class="flex items-center gap-3">

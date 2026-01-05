@@ -1,195 +1,73 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2">
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
-</p>
+# 🎯 Artisans Task Manager & Corporate Portal
 
-# 🚀 Web Final Project
+A **Full-Stack Web Application** built with Native PHP (MVC Architecture) and PostgreSQL. This system features a public dynamic landing page for customers and a secure private dashboard for task and project management.
 
-> A modern **Project Management System** built with Native PHP MVC Architecture. Designed for teams to organize projects, assign tasks, track deadlines, and collaborate effectively.
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## 📸 Screenshots
+## 👥 Team Members
 
-<p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="80%">
-</p>
-
-<details>
-<summary>View More Screenshots</summary>
-
-| Login Page | Projects List |
-|------------|---------------|
-| ![Login](docs/screenshots/login.png) | ![Projects](docs/screenshots/projects.png) |
-
-| Task Details | Team Members |
-|--------------|--------------|
-| ![Task](docs/screenshots/task.png) | ![Members](docs/screenshots/members.png) |
-
-</details>
+| Name | Student ID | Role |
+|------|------------|------|
+| **Alzubair Salaheddin Alojali** | 4426 | Backend Developer |
+| **Mohamed Ramadan Alwerfalli** | 5013 | Frontend Developer |
+| **Mohammed Jamal Eltarhoni** | 4469 | Frontend Developer |
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### 🔐 Authentication & Security
-- Secure Login/Register with password hashing
-- Guest Guards (redirect logged-in users away from auth pages)
-- Role-Based Access Control (Manager vs Employee)
-- Session security with regeneration
+### 🌐 Public Landing Page
+- **Dynamic Services Section** – Content fetched from database, managed via admin panel
+- **Editable About Us Section** – Site settings stored in database
+- **Contact Form** – Visitor messages saved to database with read/unread status
+- **Modern UI** – Responsive design with Tailwind CSS
 
-### 📊 Dashboard
-- Real-time statistics (Projects, Tasks, Completed)
-- Recent activity feed
-- Quick access to projects and tasks
+### 🔐 Admin Dashboard
+- **Secure Authentication** – Login/Register with password hashing
+- **Role-Based Access** – Manager and Employee roles
+- **Project Management** – Full CRUD operations with team assignment
+- **Task Management** – Create, assign, track tasks with priorities and due dates
+- **Content Management** – Edit landing page content and services
+- **Message Inbox** – View and manage contact form submissions
 
-### 📁 Project Management
-- Full CRUD operations
-- Ownership protection (only managers can edit their projects)
-- Project status tracking (Pending, Active, Completed)
-- Deadline management
-
-### ✅ Task Management
-- Create, assign, and track tasks
-- Priority levels (Low, Medium, High)
-- Status workflow (Pending → In Progress → Completed)
-- Due date tracking with overdue indicators
-
-### 👥 Team Collaboration
-- Add/remove project members
-- Chat-style comments on tasks
-- Real-time discussion threads
-
-### 🔍 Search
-- Global search across projects and tasks
-- Instant results with highlighting
-
-### 🎨 Modern UI/UX
-- Responsive design (Mobile-first)
-- Beautiful Tailwind CSS styling
-- Interactive Alpine.js components
-- Smooth animations and transitions
-
----
-
-## 🛠️ Tech Stack
-
+### 🛠️ Tech Stack
 | Layer | Technology |
 |-------|------------|
-| **Backend** | PHP 8.2 (Native MVC), PDO |
-| **Frontend** | HTML5, Tailwind CSS (CDN), Alpine.js |
-| **Database** | PostgreSQL (Production), MySQL (Development) |
-| **Infrastructure** | Docker, Render.com |
-| **Architecture** | Custom MVC Pattern |
-
----
-
-## 📦 Installation
-
-### Method A: Using Docker (Recommended) 🐳
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/web-final-project.git
-cd web-final-project
-
-# 2. Create environment file
-cp .env.example .env
-
-# 3. Edit .env with your database credentials
-nano .env
-
-# 4. Build the Docker image
-docker build -t web-final-project .
-
-# 5. Run the container
-docker run -p 8080:80 --env-file .env web-final-project
-
-# 6. Access the application
-# Open: http://localhost:8080
-```
-
-> **Note:** The container automatically runs database migrations and seeds demo data on first startup.
-
----
-
-### Method B: Manual Setup (Local Development)
-
-#### Prerequisites
-- PHP 8.2+
-- PostgreSQL 14+ or MySQL 8+
-- Apache with mod_rewrite enabled
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/web-final-project.git
-cd web-final-project
-
-# 2. Create environment file
-cp .env.example .env
-
-# 3. Configure your .env file
-DB_DRIVER=pgsql          # or 'mysql' for local development
-DB_HOST=localhost
-DB_PORT=5432             # or 3306 for MySQL
-DB_DATABASE=web_final_project
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-
-# 4. Create the database
-psql -U postgres -c "CREATE DATABASE web_final_project;"
-
-# 5. Import the schema
-psql -U postgres -d web_final_project -f database/schema.sql
-
-# 6. (Optional) Seed demo data
-php database/database_seed.php
-
-# 7. Configure Apache virtual host to point to /public directory
-
-# 8. Access the application
-# Open: http://localhost/web_final_project/public
-```
-
----
-
-## 🧪 Demo Credentials
-
-After seeding, use these credentials to explore:
-
-| Role | Email | Password |
-|------|-------|----------|
-| **Manager** | mohammed@tripoli.ly | password123 |
-| **Employee** | salim@benghazi.ly | password123 |
+| Backend | PHP 8.2 (Native MVC) |
+| Database | PostgreSQL / MySQL |
+| Frontend | HTML5, Tailwind CSS, Alpine.js |
+| Deployment | Docker, Render.com |
+| Version Control | Git & GitHub |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-web-final-project/
+web_final_project/
 ├── app/
-│   ├── Controllers/       # Request handlers
+│   ├── Controllers/       # Application controllers
 │   ├── Models/            # Database models
-│   └── Requests/          # Form validation
+│   └── Requests/          # Form validation classes
 ├── config/
 │   └── database.php       # Database configuration
 ├── core/
-│   ├── Controller.php     # Base controller
-│   ├── Model.php          # Base model
+│   ├── Controller.php     # Base controller class
+│   ├── Model.php          # Base model class
 │   ├── Router.php         # URL routing
-│   └── Validator.php      # Input validation
+│   └── Env.php            # Environment loader
 ├── database/
-│   ├── schema.sql         # PostgreSQL schema
-│   └── database_seed.php  # Demo data seeder
+│   ├── schema_mysql.sql   # MySQL schema
+│   ├── schema_postgres.sql # PostgreSQL schema
+│   └── database_seed.php  # Database seeder
 ├── public/
-│   ├── index.php          # Application entry point
-│   └── .htaccess          # URL rewriting
-├── resources/
-│   └── views/             # PHP templates
+│   └── index.php          # Application entry point
+├── resources/views/       # View templates
 ├── routes/
 │   └── web.php            # Route definitions
 ├── .env.example           # Environment template
@@ -199,72 +77,141 @@ web-final-project/
 
 ---
 
-## 🌐 Deployment (Render.com)
+## 🚀 Setup & Installation
 
-1. **Create PostgreSQL Database** on Render
-2. **Create Web Service** → Connect GitHub repo
-3. **Set Environment Variables:**
+### Option A: Local Development (XAMPP / Laragon)
+
+**Prerequisites:** PHP 8.0+, MySQL/PostgreSQL, Apache
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-repo/web_final_project.git
+   cd web_final_project
    ```
-   DB_DRIVER=pgsql
-   DB_HOST=<from-render-database>
-   DB_PORT=5432
-   DB_DATABASE=<from-render>
-   DB_USERNAME=<from-render>
-   DB_PASSWORD=<from-render>
-   APP_DEBUG=false
+
+2. **Configure environment**
+   ```bash
+   cp .env.example .env
    ```
-4. **Deploy** → Render will build using Dockerfile
+   
+   Edit `.env` and set your database credentials:
+   ```env
+   APP_URL=/web_final_project/public
+   
+   DB_DRIVER=mysql
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_NAME=web_final_project
+   DB_USER=root
+   DB_PASS=
+   ```
+
+3. **Import database schema**
+   
+   For MySQL:
+   ```bash
+   mysql -u root -p web_final_project < database/schema_mysql.sql
+   ```
+   
+   For PostgreSQL:
+   ```bash
+   psql -U postgres -d web_final_project -f database/schema_postgres.sql
+   ```
+
+4. **Seed the database**
+   ```bash
+   php database/database_seed.php
+   ```
+
+5. **Access the application**
+   ```
+   http://localhost/web_final_project/public
+   ```
 
 ---
 
-## 🔒 Security Features
+### Option B: Docker / Production (Render.com)
 
-- ✅ Password hashing with `password_hash()`
-- ✅ PDO Prepared Statements (SQL Injection prevention)
-- ✅ XSS protection with `htmlspecialchars()`
-- ✅ Session regeneration after login
-- ✅ Role-based access control
-- ✅ Ownership verification on all mutations
+**Prerequisites:** Docker installed
+
+1. **Build the Docker image**
+   ```bash
+   docker build -t artisans-task-manager .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run -d -p 8080:80 \
+     -e APP_URL="" \
+     -e DB_DRIVER=pgsql \
+     -e DB_HOST=your-db-host \
+     -e DB_PORT=5432 \
+     -e DB_NAME=your-db-name \
+     -e DB_USER=your-db-user \
+     -e DB_PASS=your-db-password \
+     artisans-task-manager
+   ```
+
+3. **For Render.com deployment:**
+   - Connect your GitHub repository
+   - Set environment variables in Render dashboard
+   - Run the PostgreSQL migration via Supabase SQL Editor using `database/migrations_supa.sql`
 
 ---
 
-## 🤝 Contributing
+## 🗄️ Database & Seeding
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### Idempotent Seeder
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The database seeder is designed to be **re-runnable without duplicating data**. It checks for existing records before inserting.
+
+**Run the seeder:**
+```bash
+php database/database_seed.php
+```
+
+**What gets seeded:**
+| Table | Records |
+|-------|---------|
+| Users | 4 (1 Manager, 3 Employees) |
+| Projects | 2 |
+| Tasks | 5 |
+| Comments | 3 |
+| Services | 3 |
+| Site Settings | 3 |
+| Messages | 2 |
+
+---
+
+## 🔑 Default Login Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Manager** | `mohammed@tripoli.ly` | `password123` |
+| Employee | `salim@benghazi.ly` | `password123` |
+| Employee | `fatima@misrata.ly` | `password123` |
+| Employee | `ahmed@tripoli.ly` | `password123` |
+
+> ⚠️ **Note:** Change these passwords in production!
+
+---
+
+## 📸 Screenshots
+
+| Landing Page | Dashboard |
+|--------------|-----------|
+| Public-facing page with services and contact form | Project and task management interface |
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project was developed as part of a university course assignment.
 
----
-
-## 🎓 Credits
-
-**Built as a Final University Project**
-
-This project was developed as part of a university course to demonstrate proficiency in:
-- Native PHP development (without frameworks)
-- MVC architectural patterns
-- Database design and management
-- Modern frontend technologies
-- DevOps and containerization
-
----
-
-## 📞 Contact
-
-For questions or feedback, please open an issue on GitHub.
+**© 2026 Artisans Team** – Alzubair, Mohamed, Mohammed
 
 ---
 
 <p align="center">
-  Made with ❤️ in Libya 🇱🇾
+  <strong>Built with ❤️ in Libya 🇱🇾</strong>
 </p>

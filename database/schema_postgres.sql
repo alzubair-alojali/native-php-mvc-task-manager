@@ -1,11 +1,39 @@
+-- =============================================================================
 -- PostgreSQL Schema for Web Final Project
--- Compatible with Render.com's PostgreSQL database
+-- Compatible with Render.com / Supabase PostgreSQL database
+-- =============================================================================
 
--- Create ENUM types for PostgreSQL
-CREATE TYPE user_role AS ENUM ('manager', 'employee');
-CREATE TYPE project_status AS ENUM ('pending', 'active', 'completed');
-CREATE TYPE task_status AS ENUM ('pending', 'in_progress', 'completed');
-CREATE TYPE task_priority AS ENUM ('low', 'medium', 'high');
+-- =============================================================================
+-- ENUM TYPES (PostgreSQL specific)
+-- =============================================================================
+
+DO $$ BEGIN
+    CREATE TYPE user_role AS ENUM ('manager', 'employee');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE project_status AS ENUM ('pending', 'active', 'completed');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE task_status AS ENUM ('pending', 'in_progress', 'completed');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE task_priority AS ENUM ('low', 'medium', 'high');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+-- =============================================================================
+-- CORE TASK MANAGER TABLES
+-- =============================================================================
 
 -- Users Table
 CREATE TABLE IF NOT EXISTS users (
@@ -69,35 +97,6 @@ CREATE TABLE IF NOT EXISTS project_members (
     CONSTRAINT fk_members_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Create indexes for better query performance
-CREATE INDEX IF NOT EXISTS idx_projects_manager ON projects(manager_id);
-CREATE INDEX IF NOT EXISTS idx_tasks_project ON tasks(project_id);
-CREATE INDEX IF NOT EXISTS idx_tasks_assigned ON tasks(assigned_to);
-CREATE INDEX IF NOT EXISTS idx_comments_task ON comments(task_id);
-CREATE INDEX IF NOT EXISTS idx_project_members_user ON project_members(user_id);
-
--- Function to auto-update 'updated_at' timestamp
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updated_at = CURRENT_TIMESTAMP;
-    RETURN NEW;
-END;
-$$ language 'plpgsql';
-
--- Triggers for auto-updating timestamps
-DROP TRIGGER IF EXISTS update_projects_updated_at ON projects;
-CREATE TRIGGER update_projects_updated_at
-    BEFORE UPDATE ON projects
-    FOR EACH ROW
-    EXECUTE FUNCTION update_updated_at_column();
-
-DROP TRIGGER IF EXISTS update_tasks_updated_at ON tasks;
-CREATE TRIGGER update_tasks_updated_at
-    BEFORE UPDATE ON tasks
-    FOR EACH ROW
-    EXECUTE FUNCTION update_updated_at_column();
-
 -- =============================================================================
 -- LANDING PAGE & CONTACT FORM TABLES
 -- =============================================================================
@@ -107,7 +106,7 @@ CREATE TABLE IF NOT EXISTS services (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     description TEXT,
-    icon VARCHAR(50),  -- FontAwesome class (e.g., 'fa-code', 'fa-mobile')
+    icon VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -129,13 +128,48 @@ CREATE TABLE IF NOT EXISTS messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Indexes for new tables
+-- =============================================================================
+-- INDEXES FOR PERFORMANCE
+-- =============================================================================
+
+CREATE INDEX IF NOT EXISTS idx_projects_manager ON projects(manager_id);
+CREATE INDEX IF NOT EXISTS idx_tasks_project ON tasks(project_id);
+CREATE INDEX IF NOT EXISTS idx_tasks_assigned ON tasks(assigned_to);
+CREATE INDEX IF NOT EXISTS idx_comments_task ON comments(task_id);
+CREATE INDEX IF NOT EXISTS idx_project_members_user ON project_members(user_id);
 CREATE INDEX IF NOT EXISTS idx_services_created ON services(created_at);
 CREATE INDEX IF NOT EXISTS idx_site_settings_key ON site_settings(setting_key);
 CREATE INDEX IF NOT EXISTS idx_messages_is_read ON messages(is_read);
 CREATE INDEX IF NOT EXISTS idx_messages_created ON messages(created_at);
 
--- Trigger for auto-updating site_settings.updated_at
+-- =============================================================================
+-- AUTO-UPDATE TRIGGERS (PostgreSQL requires explicit triggers)
+-- =============================================================================
+
+-- Function to auto-update 'updated_at' timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Trigger for projects table
+DROP TRIGGER IF EXISTS update_projects_updated_at ON projects;
+CREATE TRIGGER update_projects_updated_at
+    BEFORE UPDATE ON projects
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Trigger for tasks table
+DROP TRIGGER IF EXISTS update_tasks_updated_at ON tasks;
+CREATE TRIGGER update_tasks_updated_at
+    BEFORE UPDATE ON tasks
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Trigger for site_settings table
 DROP TRIGGER IF EXISTS update_site_settings_updated_at ON site_settings;
 CREATE TRIGGER update_site_settings_updated_at
     BEFORE UPDATE ON site_settings

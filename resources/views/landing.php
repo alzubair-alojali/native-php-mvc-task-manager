@@ -1,9 +1,14 @@
 <?php
-$title = 'Web Final Project - University Project Management';
+$title = 'Artisans Task Manager - Project Management';
+
+// Extract settings with defaults
+$heroHeading = htmlspecialchars($settings['hero_heading'] ?? 'Manage Your University Projects with Ease');
+$aboutTitle = htmlspecialchars($settings['about_us_title'] ?? 'About Artisans Task Manager');
+$aboutContent = htmlspecialchars($settings['about_us_content'] ?? 'A powerful project management solution built for teams worldwide.');
 
 // Guest guard: If logged in, redirect to dashboard
 if (isset($_SESSION['user_id'])) {
-    header("Location: /dashboard");
+    header("Location: " . base_url('/dashboard'));
     exit;
 }
 
@@ -23,16 +28,26 @@ ob_start();
                             d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                     </svg>
                 </div>
-                <span class="text-lg font-bold text-slate-900">Web Final Project</span>
+                <span class="text-lg font-bold text-slate-900">Artisans Task Manager</span>
             </div>
 
             <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#about"
+                    class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">About</a>
+                <a href="#services"
+                    class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Services</a>
+                <a href="#contact"
+                    class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Auth Links -->
             <div class="flex items-center gap-3">
-                <a href="/login"
+                <a href="<?= base_url('/login') ?>"
                     class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-4 py-2">
                     Sign In
                 </a>
-                <a href="/register"
+                <a href="<?= base_url('/register') ?>"
                     class="inline-flex items-center rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition-all">
                     Get Started
                 </a>
@@ -42,7 +57,7 @@ ob_start();
 </header>
 
 <!-- Hero Section -->
-<section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-white">
+<section id="hero" class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-white">
     <!-- Background Pattern -->
     <div class="absolute inset-0 -z-10">
         <svg class="absolute right-0 top-0 h-[600px] w-[600px] -translate-y-1/4 translate-x-1/4 text-indigo-100 opacity-50"
@@ -64,10 +79,9 @@ ob_start();
                 For University Students & Teams
             </div>
 
-            <!-- Main Headline -->
+            <!-- Dynamic Main Headline -->
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Manage Your University Projects with
-                <span class="text-indigo-600"> Web Final Project</span>
+                <?= $heroHeading ?>
             </h1>
 
             <!-- Subheadline -->
@@ -78,52 +92,62 @@ ob_start();
 
             <!-- CTA Buttons -->
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/register"
+                <a href="<?= base_url('/register') ?>"
                     class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-indigo-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-500 hover:shadow-xl transition-all duration-300">
                     Get Started Free
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                 </a>
-                <a href="/login"
+                <a href="<?= base_url('/login') ?>"
                     class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 ring-1 ring-indigo-200 hover:ring-indigo-300 hover:bg-indigo-50 transition-all duration-300">
                     Sign In
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                    </svg>
                 </a>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Dashboard Preview Placeholder -->
-        <div class="mt-20 relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10"></div>
-            <div class="rounded-2xl bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-800">
-                <div class="rounded-xl bg-slate-800 p-4 sm:p-6">
-                    <!-- Mock Dashboard Header -->
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-3 w-3 rounded-full bg-red-500"></div>
-                        <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
-                        <div class="h-3 w-3 rounded-full bg-green-500"></div>
-                        <div class="flex-1 h-6 rounded bg-slate-700"></div>
-                    </div>
-                    <!-- Mock Content -->
-                    <div class="grid grid-cols-4 gap-4">
-                        <div class="col-span-1 space-y-3">
-                            <div class="h-8 rounded bg-slate-700"></div>
-                            <div class="h-4 w-3/4 rounded bg-slate-700"></div>
-                            <div class="h-4 w-1/2 rounded bg-slate-700"></div>
-                        </div>
-                        <div class="col-span-3 grid grid-cols-3 gap-4">
-                            <div class="h-24 rounded-lg bg-indigo-600/20 border border-indigo-500/30"></div>
-                            <div class="h-24 rounded-lg bg-emerald-600/20 border border-emerald-500/30"></div>
-                            <div class="h-24 rounded-lg bg-amber-600/20 border border-amber-500/30"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- About Section -->
+<section id="about" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6"><?= $aboutTitle ?></h2>
+            <p class="text-lg text-slate-600 leading-relaxed"><?= $aboutContent ?></p>
         </div>
+    </div>
+</section>
+
+<!-- Services Section (Dynamic) -->
+<section id="services" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900">Our Services</h2>
+            <p class="mt-4 text-lg text-slate-600">What we offer to help you succeed.</p>
+        </div>
+
+        <?php if (!empty($services)): ?>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <?php foreach ($services as $service): ?>
+                    <div
+                        class="bg-slate-50 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="h-14 w-14 rounded-xl bg-indigo-100 flex items-center justify-center mb-6">
+                            <i class="fas <?= htmlspecialchars($service['icon'] ?? 'fa-star') ?> text-2xl text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                            <?= htmlspecialchars($service['title']) ?>
+                        </h3>
+                        <p class="text-slate-600">
+                            <?= htmlspecialchars($service['description'] ?? '') ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="text-center text-slate-500">
+                <p>No services available at the moment.</p>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -180,12 +204,101 @@ ob_start();
     </div>
 </section>
 
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Contact Us</h2>
+                <p class="mt-4 text-lg text-slate-600">Have a question? We'd love to hear from you.</p>
+            </div>
+
+            <!-- Flash Messages -->
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="mb-6 rounded-lg bg-emerald-50 border border-emerald-200 p-4">
+                    <div class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-emerald-700"><?= htmlspecialchars($_SESSION['success']) ?></p>
+                    </div>
+                </div>
+                <?php unset($_SESSION['success']); endif; ?>
+
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4">
+                    <div class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>
+                        <p class="text-red-700"><?= htmlspecialchars($_SESSION['error']) ?></p>
+                    </div>
+                </div>
+                <?php unset($_SESSION['error']); endif; ?>
+
+            <!-- Contact Form -->
+            <form action="<?= base_url('/contact-submit') ?>" method="POST" class="bg-slate-50 rounded-2xl p-8">
+                <div class="space-y-6">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Your Name</label>
+                        <input type="text" name="name" id="name" required
+                            value="<?= htmlspecialchars($_SESSION['old']['name'] ?? '') ?>"
+                            class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                            placeholder="Enter your name">
+                        <?php if (isset($_SESSION['errors']['name'])): ?>
+                            <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($_SESSION['errors']['name']) ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                        <input type="email" name="email" id="email" required
+                            value="<?= htmlspecialchars($_SESSION['old']['email'] ?? '') ?>"
+                            class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                            placeholder="you@example.com">
+                        <?php if (isset($_SESSION['errors']['email'])): ?>
+                            <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($_SESSION['errors']['email']) ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Your Message</label>
+                        <textarea name="message" id="message" rows="5" required
+                            class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all resize-none"
+                            placeholder="Tell us how we can help..."><?= htmlspecialchars($_SESSION['old']['message'] ?? '') ?></textarea>
+                        <?php if (isset($_SESSION['errors']['message'])): ?>
+                            <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($_SESSION['errors']['message']) ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full rounded-lg bg-indigo-600 px-6 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-500 focus:ring-4 focus:ring-indigo-200 transition-all">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            <?php
+            // Clear old input after displaying
+            unset($_SESSION['old'], $_SESSION['errors']);
+            ?>
+        </div>
+    </div>
+</section>
+
 <!-- CTA Section -->
 <section class="py-20 bg-indigo-600">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-white mb-6">Ready to ace your projects?</h2>
-        <p class="text-lg text-indigo-100 mb-10">Join students already using Web Final Project.</p>
-        <a href="/register"
+        <p class="text-lg text-indigo-100 mb-10">Join students already using Artisans Task Manager.</p>
+        <a href="<?= base_url('/register') ?>"
             class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-indigo-600 shadow-lg hover:bg-indigo-50 transition-all">
             Start Free Today
         </a>
@@ -204,9 +317,9 @@ ob_start();
                             d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                     </svg>
                 </div>
-                <span class="font-semibold text-slate-900">Web Final Project</span>
+                <span class="font-semibold text-slate-900">Artisans Task Manager</span>
             </div>
-            <p class="text-sm text-slate-500">&copy; <?= date('Y') ?> Web Final Project. All rights reserved.</p>
+            <p class="text-sm text-slate-500">&copy; <?= date('Y') ?> Artisans Task Manager. All rights reserved.</p>
         </div>
     </div>
 </footer>

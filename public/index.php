@@ -4,8 +4,8 @@
 // 1. Start Session
 session_start();
 
-// 2. Production Error Handling (disable display, log errors)
-ini_set('display_errors', 0);
+// 2. DEBUG: Enable error display (disable in production)
+ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
@@ -14,6 +14,7 @@ require_once '../config/database.php';
 require_once '../core/Router.php';
 require_once '../core/Controller.php';
 require_once '../core/Model.php';
+require_once '../core/helpers.php';
 
 // 3. Load your specific app files (You can automate this later)
 require_once '../app/Controllers/DashboardController.php';

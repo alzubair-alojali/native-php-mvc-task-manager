@@ -88,3 +88,29 @@ $router->post('profile/update', 'ProfileController@update');
 // MY TASKS (User's assigned tasks across all projects)
 // -----------------------------------------------------------------------------
 $router->get('tasks/my-tasks', 'TaskController@myTasks');
+
+// -----------------------------------------------------------------------------
+// CONTACT FORM (Public)
+// -----------------------------------------------------------------------------
+$router->post('contact-submit', 'HomeController@sendMessage');
+
+// =============================================================================
+// ADMIN ROUTES (Manager Only)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// ADMIN: Content Management (Services & Settings)
+// -----------------------------------------------------------------------------
+$router->get('admin/content', 'AdminContentController@index');
+$router->post('admin/services/store', 'AdminContentController@storeService');
+$router->post('admin/services/update', 'AdminContentController@updateService');
+$router->post('admin/services/delete', 'AdminContentController@deleteService');
+$router->post('admin/settings/update', 'AdminContentController@updateSettings');
+
+// -----------------------------------------------------------------------------
+// ADMIN: Messages (Contact Form Submissions)
+// -----------------------------------------------------------------------------
+$router->get('admin/messages', 'AdminMessageController@index');
+$router->get('admin/messages/show', 'AdminMessageController@show');
+$router->post('admin/messages/toggle-read', 'AdminMessageController@toggleRead');
+$router->post('admin/messages/delete', 'AdminMessageController@delete');
