@@ -7,6 +7,8 @@ A **Full-Stack Web Application** built with Native PHP (MVC Architecture) and Po
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+🔗 **Live Demo:** [https://native-php-mvc-task-manager.onrender.com](https://native-php-mvc-task-manager.onrender.com)
+
 ---
 
 ## 👥 Team Members
@@ -85,7 +87,7 @@ web_final_project/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-repo/web_final_project.git
+   git clone <repository-url>
    cd web_final_project
    ```
 
@@ -198,9 +200,11 @@ php database/database_seed.php
 
 ## 📸 Screenshots
 
-| Landing Page | Dashboard |
-|--------------|-----------|
-| Public-facing page with services and contact form | Project and task management interface |
+### Landing Page
+![Landing Page](screenshot/Screenshot%20landing%20page.png)
+
+### Admin Dashboard
+![Dashboard](screenshot/Screenshot%20dashboard.png)
 
 ---
 
@@ -208,10 +212,10 @@ php database/database_seed.php
 
 This project was developed as part of a university course assignment.
 
-**© 2026 Artisans Team** – Alzubair, Mohamed, Mohammed
+**© 2026 Alzubair, Mohamed, Mohammed**
 
 ---
 
 <p align="center">
-  <strong>Built with ❤️ in Libya 🇱🇾</strong>
+  <strong>Built with ❤️ in Limu</strong>
 </p>
